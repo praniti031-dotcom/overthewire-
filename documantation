@@ -1,5 +1,26 @@
 level 0-1 passord -:  6y2kwnwK6grgvwvpvLaa2T1cpFEKOhNR
 level 1-2 password -: PK8fYLZg2hnHSz83plBL1iEPKdD3QToB
+
+
 level 2-3 password -: 7ZZ2LFrykP2zEyvBl4m3clcL7tGYJPME
 command used in this level is -: cat "./--spaces in this filename--"
 very important command we use it when there are spaces in file
+
+level 3-4
+to go to specific directory use command cd[directory name]
+command to find hidden file -: find . -type f -name ".*"
+password -: xzTXq1rDJQVVAzdv5cHq1TQytTWufAMq
+
+level 4-5
+Here I have to find human readable file only in directory.
+commands to open only readable files-:
+bandit4@bandit:~$ cd inhere
+bandit4@bandit:~/inhere$ ls
+
+command to open specific file
+bandit4@bandit:~/inhere$ cat ./-file07
+password -: 6C7h9GD8M6ai5nr7wo1RonrzFjj9yIrG
+
+level 5-6
+
+
