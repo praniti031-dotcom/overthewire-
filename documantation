@@ -364,8 +364,101 @@ but you get a private SSH key that can be used to log into the next level. Look 
 and find out how to use the key for this level.
 If you need help with this level: a hint file can be found in the home directory.
 Make sure to read the error messages as they are informative.
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+password -: aaWecNkG4FhxJQxz07uiwzVP6bJiYS65
+
+# Bandit Level 13 → 14
+## Goal
+Use the provided SSH private key to log in as `bandit14` and obtain the password.
+## Steps
+On Bandit Level 13:
+```bash
+ls
+cat sshkey.private
+```
+Copy the complete private key, including:
+```text
+-----BEGIN RSA PRIVATE KEY-----
+...
+-----END RSA PRIVATE KEY-----
+```
+Exit the Bandit server:
+```bash
+exit
+```
+On your local terminal, create a file:
+```bash
+nano bandit14.key
+```
+Paste the private key and save it. Then set the correct permissions:
+```bash
+chmod 600 bandit14.key
+```
+Connect using the private key:
+```bash
+ssh -i bandit14.key bandit14@bandit.labs.overthewire.org -p 2220
+```
+After successfully logging in:
+```bash
+cat /etc/bandit_pass/bandit14
+```
+This displays the password for Bandit Level 14.
+## Key Learning
+This level introduces **SSH key-based authentication**. Instead of using a password, an SSH private key is used to authenticate:
+
+```bash
+ssh -i <private_key> <username>@<host> -p <port>
+```
+> **Note:** The SSH connection must be made from your local machine. Connecting to `localhost` from inside the Bandit server is blocked.
+
+level 14 - 15
+Level Goal
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+aaWecNkG4FhxJQxz07uiwzVP6bJiYS65
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+aaWecNkG4FhxJQxz07uiwzVP6bJiYS65
+bandit14@bandit:~$ nc localhost 30000
+
+Wrong! Please enter the correct current password.
+aaWecNkG4FhxJQxz07uiwzVP6bJiYS65
+bandit14@bandit:~$ nc localhost 30000
+aaWecNkG4FhxJQxz07uiwzVP6bJiYS65
+Correct!
+password -: pbLYuZtTg4MgaqfJx8jbA9gKKGqM68A7
+# Bandit Level 14 → 15
+## Goal
+Send the password for `bandit14` to port `30000` on `localhost`.
+```bash
+cat /etc/bandit_pass/bandit14
+```
+Connect to the port:
+```bash
+nc localhost 30000
+```
+Paste the password and press **Enter**. The server responds with the password for `bandit15`.
+### Alternative
+```bash
+cat /etc/bandit_pass/bandit14 | nc localhost 30000
+```
+## Key Learning
+`nc` (Netcat) can be used to communicate with network services:
+```bash
+nc <host> <port>
+```
+The pipe (`|`) sends the output of one command as input to another.
 
 
+level 15-16
+bandit15@bandit:~$ cat /etc/bandit_pass/bandit15
+pbLYuZtTg4MgaqfJx8jbA9gKKGqM68A7
 
+password -: kS0Hf0u5HiXFwKMKFqXvPdOTNGGa0X8V
 
+level 16 - 17
+Level Goal
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. 
+First find out which of these ports have a server listening on them. Then find out which of those speak SSL/TLS and which don’t. 
+There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
 
+Helpful note: Getting “DONE”, “RENEGOTIATING” or “KEYUPDATE”? Read the “CONNECTED COMMANDS” section in the manpage.
