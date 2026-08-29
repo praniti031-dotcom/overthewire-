@@ -120,136 +120,89 @@ Copy the original file:
 
 ```bash
 cp ~/data.txt .
-```
-
----
-
 ## Step 2: Check the File Type
 
 ```bash
 file data.txt
 ```
-
 Output:
-
 ```text
 data.txt: ASCII text
 ```
-
 The file is ASCII text because it contains a hexdump.
-
 ---
-
 ## Step 3: Reverse the Hexdump
-
 Use `xxd -r` to convert the hexdump back into its original binary form:
-
 ```bash
 xxd -r data.txt > data
 ```
-
 Check the file type:
-
 ```bash
 file data
 ```
-
 Output:
-
 ```text
 data: gzip compressed data
 ```
-
 ---
-
 ## Step 4: Extract the Gzip File
-
 Rename the file with the correct extension and decompress it:
-
 ```bash
 mv data data.gz
 gunzip data.gz
 ```
-
 Check the file type again:
-
 ```bash
 file data
 ```
-
 The file is now:
-
 ```text
 bzip2 compressed data
 ```
-
 ---
-
 ## Step 5: Extract the Bzip2 File
-
 ```bash
 mv data data.bz2
 bunzip2 data.bz2
 ```
-
 Check the file again:
-
 ```bash
 file data
 ```
-
 The file becomes gzip compressed again.
-
 Extract it:
-
 ```bash
 mv data data.gz
 gunzip data.gz
 ```
-
 ---
-
 ## Step 6: Extract the TAR Archive
-
 Check the file type:
-
 ```bash
 file data
 ```
-
 The output shows:
-
 ```text
 POSIX tar archive (GNU)
 ```
-
 Extract it:
-
 ```bash
 mv data data.tar
 tar -xf data.tar
 ```
-
 List the files:
-
 ```bash
 ls
 ```
-
 A new file is created:
-
 ```text
 data5.bin
 ```
-
 Check its type:
-
 ```bash
 file data5.bin
 ```
-
 It is another TAR archive.
-
 Extract it:
 
 ```bash
