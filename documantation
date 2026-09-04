@@ -472,7 +472,7 @@ level 18 - 19
 
 password - KpsOfPkcP7i1FlIExk2QEjyt6dw8dxZI
 
-level 19 - 20
+level 19 - 20 
 bandit19@bandit:~$ ls -l
 total 16
 -rwsr-x--- 1 bandit20 bandit19 14880 Jun 24 14:58 bandit20-do
